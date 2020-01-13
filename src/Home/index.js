@@ -8,8 +8,8 @@ export default class Home extends Component {
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                 <Text>Home ;D</Text>
                 <Button 
-                title="Ir para Contato"
-                onPress={() => navigation.navigate('Contato', {nome: 'Heider'}) }
+                    title="Ir para Contato"
+                    onPress={() => navigation.navigate('Contato', {nome: 'Heider'}) }
                 />
             </View>
         )

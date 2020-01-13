@@ -14,11 +14,13 @@ export default class Contato extends Component {
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                 <Text>O que deseja Sr. {navigation.state.params.nome}</Text>
                 <Button 
+                    style={{ flex: 1}}
                     title="Voltar"
                     onPress={() => navigation.goBack()}
                 />
 
                 <Button 
+                    style={{ flex: 1}}
                     title="Sobre"
                     onPress={() => navigation.navigate('Sobre')}
                 />
