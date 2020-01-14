@@ -1,15 +1,19 @@
 // src/index.js
 
+import React from 'react';
+import {Image} from 'react-native';
+
 import Home from './Home';
 import Contato from './Contato';
-import Sobre from './Sobre';
+import SobreRotas from './SobreRotas';
 
 import { createAppContainer } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
+//import { createStackNavigator } from 'react-navigation-stack';
+import { createBottomTabNavigator } from 'react-navigation-tabs';
 
 
 const Routes = createAppContainer(
-  createStackNavigator({
+  createBottomTabNavigator({
     Home: {
         screen: Home
     },
@@ -17,19 +21,42 @@ const Routes = createAppContainer(
         screen: Contato
     },
     Sobre: {
-        screen: Sobre
+        screen: SobreRotas
     }
   }, {
       initialRouteName:'Home',
 
-      defaultNavigationOptions: {
-          headerTintColor: '#FFFFFF',
-          headerStyle: {
-              backgroundColor: '#006400'
+      tabBarOptions: {
+          showLabel: false,
+          activeTintColor: '#FF0000',
+          inactiveTintColor: '#DDD',
+          style: {
+              //backgroundColor: '#000'
           }
-          //headerTitle: '',
-          //headerBackTitle: null
-      }
+      },
+
+      defaultNavigationOptions: ({navigation}) => ({
+        tabBarIcon: ({focused, tintColor}) => {
+            const {routeName} = navigation.state;
+            if(focused && routeName == 'Home') {
+                return <Image source={require('../src/assets/images/home_ativo.png')} style={{width: 26, height: 26}}/>
+            } else if(routeName == 'Home') {
+                return <Image source={require('../src/assets/images/home_inativo.png')} style={{width: 26, height: 26}}/>
+            }
+
+            if(focused && routeName == 'Contato') {
+                return <Image source={require('../src/assets/images/contato_ativo.png')} style={{width: 26, height: 26}}/>
+            } else if(routeName == 'Contato') {
+                return <Image source={require('../src/assets/images/contato_inativo.png')} style={{width: 26, height: 26}}/>
+            }
+
+            if(focused && routeName == 'Sobre') {
+                return <Image source={require('../src/assets/images/sobre_ativo.png')} style={{width: 26, height: 26}}/>
+            } else if(routeName == 'Sobre') {
+                return <Image source={require('../src/assets/images/sobre_inativo.png')} style={{width: 26, height: 26}}/>
+            }
+        }
+      })
     }
   )
 );

@@ -2,19 +2,16 @@ import React, {Component} from 'react';
 import { View, Button, Text } from 'react-native';
 
 
-export default class Sobre extends Component {
+export default class Projetos extends Component {
     static navigationOptions = {
-        tabBarLabel: 'Sobre',
-        headerShown: false
+        title: 'Meus projetos'
     };
     render() {
         const navigation = this.props.navigation;
         return(
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                <Text>Sobre</Text>
-                <Button
-                    title="Projetos"
-                    onPress={()=>{this.props.navigation.navigate('Projetos')}}/>
+                <Text>Nenhum projeto até momento</Text>
+                
             </View>
         );
     }
