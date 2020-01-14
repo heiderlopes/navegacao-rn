@@ -10,6 +10,16 @@ export default class Home extends Component {
         return (
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                 <Text>Home ;D</Text>
+
+                <Button
+                    title="Contatos"
+                    onPress={()=>this.props.navigation.navigate('Contato')}
+                />
+
+                <Button
+                    title="Abrir"
+                    onPress={()=> this.props.navigation.toggleDrawer()}
+                />
             </View>
         )
     }

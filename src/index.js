@@ -5,15 +5,16 @@ import {Image} from 'react-native';
 
 import Home from './Home';
 import Contato from './Contato';
-import SobreRotas from './SobreRotas';
+import Sobre from './Sobre';
 
 import { createAppContainer } from 'react-navigation';
 //import { createStackNavigator } from 'react-navigation-stack';
-import { createBottomTabNavigator } from 'react-navigation-tabs';
+//import { createBottomTabNavigator } from 'react-navigation-tabs';
+import {createDrawerNavigator} from 'react-navigation-drawer';
 
 
 const Routes = createAppContainer(
-  createBottomTabNavigator({
+    createDrawerNavigator({
     Home: {
         screen: Home
     },
@@ -21,7 +22,7 @@ const Routes = createAppContainer(
         screen: Contato
     },
     Sobre: {
-        screen: SobreRotas
+        screen: Sobre
     }
   }, {
       initialRouteName:'Home',
@@ -34,29 +35,6 @@ const Routes = createAppContainer(
               //backgroundColor: '#000'
           }
       },
-
-      defaultNavigationOptions: ({navigation}) => ({
-        tabBarIcon: ({focused, tintColor}) => {
-            const {routeName} = navigation.state;
-            if(focused && routeName == 'Home') {
-                return <Image source={require('../src/assets/images/home_ativo.png')} style={{width: 26, height: 26}}/>
-            } else if(routeName == 'Home') {
-                return <Image source={require('../src/assets/images/home_inativo.png')} style={{width: 26, height: 26}}/>
-            }
-
-            if(focused && routeName == 'Contato') {
-                return <Image source={require('../src/assets/images/contato_ativo.png')} style={{width: 26, height: 26}}/>
-            } else if(routeName == 'Contato') {
-                return <Image source={require('../src/assets/images/contato_inativo.png')} style={{width: 26, height: 26}}/>
-            }
-
-            if(focused && routeName == 'Sobre') {
-                return <Image source={require('../src/assets/images/sobre_ativo.png')} style={{width: 26, height: 26}}/>
-            } else if(routeName == 'Sobre') {
-                return <Image source={require('../src/assets/images/sobre_inativo.png')} style={{width: 26, height: 26}}/>
-            }
-        }
-      })
     }
   )
 );
